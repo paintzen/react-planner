@@ -149,6 +149,21 @@ export class Item extends Record({
   }
 }
 
+export class FloorPlan extends Record({
+  ...sharedAttributes,
+  prototype: 'floorPlan',
+  x: 0,
+  y: 0,
+  rotation: 0
+}, 'FloorPlan') {
+  constructor(json = {}) {
+    super({
+      ...json,
+      properties: fromJS(json.properties || {})
+    });
+  }
+}
+
 export class Layer extends Record({
   id: '',
   altitude: 0,
@@ -161,6 +176,7 @@ export class Layer extends Record({
   holes: new Map(),
   areas: new Map(),
   items: new Map(),
+  floorPlan: new FloorPlan(),
   selected: new ElementsSet(),
 }, 'Layer') {
   constructor(json = {}) {
@@ -171,6 +187,7 @@ export class Layer extends Record({
       holes: safeLoadMapList(json.holes, Hole),
       areas: safeLoadMapList(json.areas, Area),
       items: safeLoadMapList(json.items, Item),
+      floorPlan: new FloorPlan(),
       selected: new ElementsSet(json.selected)
     });
   }
@@ -208,7 +225,7 @@ export class Scene extends Record({
   width: 3000,
   height: 2000,
   meta: new Map(),   //additional info
-  guides: new Map()
+  guides: new Map(),
 }, 'Scene') {
   constructor(json = {}) {
     let layers = safeLoadMapList(json.layers, Layer, DefaultLayers);

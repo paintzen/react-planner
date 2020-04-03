@@ -12,6 +12,7 @@ import Grids from './grids/grids';
 import Group from './group';
 import RulerX from './rulerX';
 import RulerY from './rulerY';
+import Floorplan from './floorplan';
 
 export {
   Viewer2D,
@@ -27,7 +28,8 @@ export {
   Grids,
   Group,
   RulerX,
-  RulerY
+  RulerY,
+  Floorplan
 };
 
 export default {
@@ -44,5 +46,6 @@ export default {
   Grids,
   Group,
   RulerX,
-  RulerY
+  RulerY,
+  Floorplan
 };

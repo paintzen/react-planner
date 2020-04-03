@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Layer, Grids } from './export';
+import { Layer, Grids, Floorplan } from './export';
 
 export default class Scene extends Component {
 
@@ -16,7 +16,7 @@ export default class Scene extends Component {
     return (
       <g>
         <Grids scene={scene}/>
-
+        <Floorplan scene={scene}/>
         <g style={{pointerEvents: 'none'}}>
           {
             layers
